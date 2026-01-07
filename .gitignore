@@ -1,0 +1,10 @@
+.venv
+dist
+*.cast
+__pycache__/
+.coverage
+coverage.xml
+.env
+.env.local
+main.py
+.vscode
