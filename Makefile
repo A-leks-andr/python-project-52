@@ -9,3 +9,6 @@ lint:
 
 format:
 	uv run ruff format
+
+render-start:
+	gunicorn task_manager.wsgi
