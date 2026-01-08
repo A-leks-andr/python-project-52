@@ -15,3 +15,6 @@ render-start:
 
 start:
 	uv run manage.py runserver 8080
+
+update-css:
+	python manage.py collectstatic --noinput
