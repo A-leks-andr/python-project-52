@@ -12,3 +12,6 @@ format:
 
 render-start:
 	gunicorn task_manager.wsgi
+
+start:
+	uv run manage.py runserver 8080

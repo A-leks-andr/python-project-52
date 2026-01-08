@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+{% block content %}
+<div id="center">
+    <div class="container">
+        <p id="first">Привет от Хекслета</p>
+        <p id="second">Практические курсы по программированию</p>
+        <hr>
+        <a href="https://ru.hexlet.io" class="btn-st">Узнать больше</a>
+        
+    </div>
+</div>
+{% endblock %}

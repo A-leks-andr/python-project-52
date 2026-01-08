@@ -1,5 +1,7 @@
 line-length = 80
 preview = false
+
+[lint]
 select = ["E", "F", "I", "C90"]
 exclude = [
     "migrations/",
@@ -7,6 +9,5 @@ exclude = [
     ".venv/"
 ]
 
-[per-file-ignores]
-  # init modules can contain the local imports, logic, unused imports
+[lint.per-file-ignores]
 "__init__.py" = ["F401"]

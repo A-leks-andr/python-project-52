@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}{% endblock %}
+    <title>Менеджер задач Hexlet</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body class="vh-100">
+    <header class="top_1">
+        <nav>
+            <a href="{% url 'index' %}">Менеджер задач</a></li>
+            <p>Пользователи</p>
+            <p>Вход</p>
+            <p>Регистрация</p>
+        </nav>
+    </header>
+    
+<div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
