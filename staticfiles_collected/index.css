@@ -20,17 +20,19 @@
   width: 100%;
   max-width: 1000px;
   margin: 40px auto;
-  
   padding: 40px;
   background-color: #EBF1F7;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow-x: hidden; 
+
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: start;
     width: 100%;
 	padding: 10px;
 }
