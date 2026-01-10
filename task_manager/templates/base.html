@@ -9,16 +9,28 @@
 </head>
 <body class="vh-100">
     <header class="top_1">
-        <nav>
-            <a href="{% url 'index' %}">Менеджер задач</a></li>
-            <p>Пользователи</p>
-            <p>Вход</p>
-            <p>Регистрация</p>
-        </nav>
+        <div class="head">
+
+            <div class="logo-section">
+            <a href="{% url 'index' %}" class="logo">Менеджер задач</a></li>
+            </div>
+
+                <button class="navbar-toggler" id="navToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        </div>
+        <div class="navbar-menu" id="navbarMenu">
+                <ul class="menu">
+                    <li><a href="#">Пользователи</a></li>
+                    <li><a href="#">Вход</a></li>
+                    <li><a href="#">Регистрация</a></li>
+                </ul>
+        </div>
     </header>
     
 <div>
     {% block content %}{% endblock %}
 </div>
+<script src="{% static 'button.js' %}" defer></script>
 </body>
 </html>
