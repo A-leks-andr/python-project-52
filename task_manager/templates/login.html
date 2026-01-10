@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-form">
+  <h1>Вход</h1>
+  <form method="post">
+    <input type="hidden" name="unknown" value="gjkyfztcnm">
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_username">Имя пользователя</label>
+      <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" placeholder="Имя пользователя" required id="id_username">
+    </div>
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_password">Пароль</label>
+      <input type="password" autocomplete="current-password" placeholder="Пароль" required id="id_password">
+    </div>
+    <!-- Заменен input на кнопку для лучшей стилизации -->
+    <button type="submit" class="submit-btn">Войти</button>
+  </form>
+</div>
+
+{% endblock %}

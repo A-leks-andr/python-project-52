@@ -6,6 +6,12 @@ class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "index.html")
 
+
 class UsersView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "users.html")
+
+
+class LoginView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, "login.html")
