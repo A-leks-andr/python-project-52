@@ -1,0 +1,44 @@
+
+table {
+    width: 90%;
+    min-width: 768px;
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+thead tr {
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #EBF1F7;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #fff; 
+}
+
+caption {
+    padding: 20px;
+    font-weight: bold;
+    caption-side: top;
+    text-align: left;
+    font-size: 30px;
+    color: #000;
+}
+
+.tb-wr {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    padding-bottom: 10px;
+}

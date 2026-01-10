@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="vh-100">
+<div class="column">
     <header class="top_1">
         <div class="head">
 
@@ -21,7 +22,7 @@
         </div>
         <div class="navbar-menu" id="navbarMenu">
                 <ul class="menu">
-                    <li><a href="#">Пользователи</a></li>
+                    <li><a href="{% url 'users' %}">Пользователи</a></li>
                     <li><a href="#">Вход</a></li>
                     <li><a href="#">Регистрация</a></li>
                 </ul>
@@ -31,6 +32,12 @@
 <div>
     {% block content %}{% endblock %}
 </div>
+</div>
+<footer>
+    <div class="cellar">
+        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
+    </div>
+</footer>
 <script src="{% static 'button.js' %}" defer></script>
 </body>
 </html>

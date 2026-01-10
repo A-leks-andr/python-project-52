@@ -2,11 +2,18 @@ html, body {
 	padding: 0;
 	margin: 0;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
 }
 
 .vh-100 {
+    display: flex;
+    flex-direction: column;
 	min-height: 100vh;
+}
+
+.column {
+    flex-grow: 1;
 }
 
 .top_1 {
@@ -43,6 +50,17 @@ html, body {
     flex: 0 0 auto;
     display: flex;
     max-width: 70%;
+}
+
+.cellar {
+    margin: 25px auto;
+    padding: 5px 20px;
+    border-top: 1px solid #000;
+    width: 70%;
+}
+
+footer {
+    width: 100%;
 }
 
 /* CSS кнопки */
