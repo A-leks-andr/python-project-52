@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-form">
+  <h1>Регистрация</h1>
+  <form method="post">
+    <input type="hidden" name="unknown" value="gjkyfztcnm">
+
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_first_name">Имя</label>
+      <input type="text" name="first_name" autofocus
+      autocomplete="first_name" maxlength="150" placeholder="Имя"
+      required id="id_first_name">
+    </div>
+
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_last_name">Фамилия</label>
+      <input type="text" name="last_name"
+      autocomplete="last_name" maxlength="150" placeholder="Фамилия"
+      required id="id_last_name">
+    </div>
+
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_username">Имя пользователя</label>
+      <input type="text" name="username" autocapitalize="none"
+      autocomplete="username" maxlength="150" placeholder="Имя пользователя"
+      aria-describedby="id_username_helptext" required id="id_username">
+    </div>
+
+    <div id="id_username_helptext" class="explanation">
+        Обязательное поле. Не более 150 символов. Только буквы, цмфры и символы @ . + - _ .
+    </div>
+
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_password">Пароль</label>
+      <input type="password" name="password1" autocomplete="new-password"
+      id="id_username_helptext" placeholder="Пароль" required id="id_password1">
+    </div>
+    <div>
+        <ul>
+            <li class="explanation"> Ваш пароль должен содержать минимум 3 символа</li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+      <!-- Добавлен класс form-group -->
+      <label for="id_password2">Пароль</label>
+      <input type="password" name="password2" autocomplete="new-password"
+      id="id_username_helptext" placeholder="Подтверждение пароля" required id="id_password2">
+    </div>
+    <div id="id_password2" class="explanation">
+            Для подтверждения введите, пожалйств, пароль ещё раз.
+    </div>
+
+    <!-- Заменен input на кнопку для лучшей стилизации -->
+    <button type="submit" class="submit-btn">Зарегистрировать</button>
+  </form>
+</div>
+
+{% endblock %}

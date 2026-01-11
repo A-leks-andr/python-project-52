@@ -80,3 +80,9 @@
 .submit-btn:hover {
   background-color: #0056b3;
 }
+
+.explanation {
+  font-size: 12px;
+  padding-bottom: 12px;
+  color: #5a5a5a;
+}
