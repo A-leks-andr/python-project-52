@@ -10,6 +10,7 @@
 <div class="login-form">
   <h1>Регистрация</h1>
   <form method="post">
+    {% csrf_token %}
     <input type="hidden" name="unknown" value="gjkyfztcnm">
 
     <div class="form-group">
@@ -37,7 +38,7 @@
     </div>
 
     <div id="id_username_helptext" class="explanation">
-        Обязательное поле. Не более 150 символов. Только буквы, цмфры и символы @ . + - _ .
+        Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @ . + - _ .
     </div>
 
     <div class="form-group">
@@ -46,11 +47,8 @@
       <input type="password" name="password1" autocomplete="new-password"
       id="id_username_helptext" placeholder="Пароль" required id="id_password1">
     </div>
-    <div>
-        <ul>
-            <li class="explanation"> Ваш пароль должен содержать минимум 3 символа</li>
-        </ul>
-    </div>
+    
+    <div class="explanation">Ваш пароль должен содержать минимум 3 символа</div>
 
     <div class="form-group">
       <!-- Добавлен класс form-group -->
@@ -59,7 +57,7 @@
       id="id_username_helptext" placeholder="Подтверждение пароля" required id="id_password2">
     </div>
     <div id="id_password2" class="explanation">
-            Для подтверждения введите, пожалйств, пароль ещё раз.
+            Для подтверждения введите, пожалуйста, пароль ещё раз.
     </div>
 
     <!-- Заменен input на кнопку для лучшей стилизации -->

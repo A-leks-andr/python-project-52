@@ -9,6 +9,7 @@
 <div class="login-form">
   <h1>Вход</h1>
   <form method="post">
+    {% csrf_token %}
     <input type="hidden" name="unknown" value="gjkyfztcnm">
     <div class="form-group">
       <!-- Добавлен класс form-group -->

@@ -18,5 +18,5 @@ class LoginView(TemplateView):
 
 
 class CreateView(TemplateView):
-    def get(self, request, *args, **rwargs):
+    def get(self, request, *args, **kwargs):
         return render(request, "create.html")
