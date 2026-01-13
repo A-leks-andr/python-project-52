@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+# Create your views here.
+
 menu_unregistered = [
     {"url_name": "users", "name": "Пользователи"},
     {"url_name": "login", "name": "Вход"},
@@ -8,13 +10,13 @@ menu_unregistered = [
 ]
 
 
-class IndexView(TemplateView):
+class UsersView(TemplateView):
     def get(self, request, *args, **kwargs):
         data = {"menu": menu_unregistered}
-        return render(request, "index.html", context=data)
+        return render(request, "users/users.html", context=data)
 
 
-class LoginView(TemplateView):
+class CreateView(TemplateView):
     def get(self, request, *args, **kwargs):
         data = {"menu": menu_unregistered}
-        return render(request, "login.html", context=data)
+        return render(request, "users/create.html", context=data)
