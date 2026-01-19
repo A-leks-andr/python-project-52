@@ -26,7 +26,8 @@ format:
 	uv run ruff format
 
 render-start:
-	gunicorn task_manager.wsgi
+	python manage.py migrate
+	gunicorn task_manager.wsgi:application
 
 start:
 	uv run manage.py runserver 8080
