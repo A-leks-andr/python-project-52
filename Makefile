@@ -14,7 +14,10 @@ render-start:
 	gunicorn task_manager.wsgi
 
 start:
-	uv run manage.py runserver :8080
+	uv run manage.py runserver 8080
 
 update-css:
 	python manage.py collectstatic --noinput
+
+shell:
+	uv run manage.py shell

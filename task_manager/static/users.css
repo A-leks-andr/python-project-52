@@ -42,3 +42,18 @@ caption {
     width: 100%;
     padding-bottom: 10px;
 }
+
+.coll_w30 {
+    width: 30px;
+}
+
+.coll_w250 {
+    width: 250px;
+}
+
+.bt_us {
+    text-decoration: none; 
+    color: black;
+    cursor: pointer;
+    padding-right: 15px;
+}

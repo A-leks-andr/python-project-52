@@ -171,3 +171,72 @@ footer {
         align-items: center;
     }
 }
+
+/* Управление сообщениями */
+
+.my-message-container {
+    margin: 15px auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.my-alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    /* Убеждаемся, что анимация работает */
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Стили для разных типов сообщений (пример) */
+.my-alert-success  {
+    color: #000000;
+    background-color: #d3e7ca;
+    border-color: #d3e7ca;
+}
+
+.my-alert-error { /* Django использует 'error' как тег по умолчанию для ошибок */
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.my-alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.my-close-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.5;
+}
+
+.my-close-btn:hover {
+    opacity: 1;
+}
+
+.fr_bt {
+    display: inline;
+    margin: 0;
+}
+
+.bt {
+    padding-left: 0;
+    min-width: 90px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+}

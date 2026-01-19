@@ -23,13 +23,32 @@
         <div class="navbar-menu" id="navbarMenu">
                 <ul class="menu">
                     {% for m in menu %}
-                    <li><a href="{% url m.url_name %}">{{ m.name }}</a></li>
+                        {% if m.is_logout %}
+                        <li><form action={% url m.url_name %} method="post" class="fr_bt">
+                            {% csrf_token %}
+                            <button type="submit" class="bt">{{ m.name }}</button>
+                        </form></li>
+                        {% else %}
+                        <li><a href="{% url m.url_name %}">{{ m.name }}</a></li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
         </div>
     </header>
     
 <div>
+    <div class="my-message-container">
+{% if messages %}
+    {% for message in messages %}
+    <!-- Используем свои классы. message.tags будет 'info', 'warning', 'error' и т.д. -->
+    <div class="my-alert my-alert-{{ message.tags }}">
+        {{ message }}
+        <!-- Наша собственная кнопка закрытия -->
+        <span class="my-close-btn" aria-label="Close">&times;</span>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
     {% block content %}{% endblock %}
 </div>
 </div>

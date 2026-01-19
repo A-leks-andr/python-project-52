@@ -17,3 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Управление сообщениями
+
+// static/js/main.js
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Находим все наши кастомные кнопки закрытия
+    const closeButtons = document.querySelectorAll('.my-close-btn');
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // При клике получаем родительский элемент (.my-alert)
+            const alertBox = this.parentElement;
+            
+            // Запускаем анимацию исчезновения (CSS transition)
+            alertBox.style.opacity = '0';
+            
+            // Удаляем элемент из DOM после завершения анимации
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+                // Или alertBox.remove();
+            }, 500); // 500ms должно совпадать с transition в CSS
+        });
+    });
+});

@@ -11,21 +11,26 @@
         <caption>Пользователи</caption>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Имя пользователя</th>
+                <th class="coll_w30">ID</th>
+                <th class="coll_w250">Имя пользователя</th>
                 <th>Полное имя</th>
-                <th>Дата создания</th>
-                <th></th>
+                <th class="coll_w250">Дата создания</th>
+                <th class="coll_w250"></th>
             </tr>
         </thead>
         <tbody>
+            {% for user in records %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'update' user.id %}" class="bt_us">Изменить</a>
+                    <a href="{% url 'update' user.id %}" class="bt_us">Удалить</a>
+                </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 
