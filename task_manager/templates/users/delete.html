@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-form">
+
+    <h1>Удаление пользователя</h1>
+    <p>
+        Вы уверены что хотите удалить <strong>{{ object.username }}</strong>?
+    </p>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <button type="submit">Удалить аккаунт</button>
+    </form>
+</div>
+
+{% endblock %}
