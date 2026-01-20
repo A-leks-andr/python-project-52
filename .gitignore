@@ -10,3 +10,4 @@ main.py
 .vscode
 db.sqlite3
 staticfiles_collected/admin
+instruction.txt

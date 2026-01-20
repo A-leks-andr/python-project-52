@@ -1,7 +1,7 @@
 
 table {
     width: 90%;
-    min-width: 768px;
+    min-width: 500px;
     border-collapse: collapse;
     margin: 25px auto;
     font-size: 0.9em;
@@ -9,7 +9,7 @@ table {
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 12px 10px;
     text-align: left;
 }
 
@@ -56,4 +56,8 @@ caption {
     color: black;
     cursor: pointer;
     padding-right: 15px;
+}
+
+.bt_us:last-child {
+    margin-right: 0;
 }

@@ -5,7 +5,7 @@ from django.db.models.base import Model as Model
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from task_manager.menu import menu_registered, menu_unregistered
 from task_manager.users.forms import UserRegistrationForm, UserUpdateDataForm
@@ -90,7 +90,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = User
-    template_name = 'users/delete.html' 
+    template_name = "users/delete.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -99,15 +99,14 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.get_object().pk == self.request.user.pk
-    
+
     def handle_no_permission(self):
         messages.error(self.request, "Чужую запись нельзя удалить.")
-        return redirect('users') 
-    
+        return redirect("users")
+
     def get_success_url(self):
-        username = self.object.username # type: ignore
+        username = self.object.username  # type: ignore
         messages.success(
-            self.request, 
-            f"Пользователь \"{username}\" успешно удалён."
+            self.request, f'Пользователь "{username}" успешно удалён.'
         )
-        return reverse_lazy('index')
+        return reverse_lazy("index")
