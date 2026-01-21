@@ -2,6 +2,7 @@ line-length = 80
 preview = false
 exclude = [
     "task_manager/users/migrations/",
+    "task_manager/statuses/migrations/",
     "settings.py",
     ".venv/"
 ]

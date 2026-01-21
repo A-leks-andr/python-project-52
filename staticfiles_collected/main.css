@@ -54,13 +54,13 @@ html, body {
 
 .cellar {
     margin: 25px auto;
-    padding: 5px 20px;
     border-top: 1px solid #000;
-    width: 70%;
+    width: 100%;
 }
 
 footer {
-    width: 100%;
+    width: 80%;
+    margin: 25px auto;
 }
 
 /* CSS кнопки */

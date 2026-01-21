@@ -9,4 +9,5 @@ urlpatterns = [
     path("users/", include("task_manager.users.urls")),
     path("admin/", admin.site.urls),
     path("logout/", views.UserLogoutView.as_view(), name="logout"),
+    path("statuses/", include("task_manager.statuses.urls")),
 ]
