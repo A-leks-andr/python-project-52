@@ -16,7 +16,7 @@ User = get_user_model()
 
 class UsersView(ListView):
     model = User
-    template_name = "users/users.html"
+    template_name = "users/users_list.html"
     context_object_name = "records"
 
     def get_context_data(self, **kwargs):
@@ -30,7 +30,7 @@ class UsersView(ListView):
 
 class UserCreateView(CreateView):
     form_class = UserRegistrationForm
-    template_name = "users/create.html"
+    template_name = "users/create_user.html"
     success_url = reverse_lazy("login")
 
     def get_context_data(self, **kwargs):
@@ -50,7 +50,7 @@ class UserCreateView(CreateView):
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
     form_class = UserUpdateDataForm
-    template_name = "users/create.html"
+    template_name = "users/create_user.html"
     success_url = reverse_lazy("users")
 
     def test_func(self):
@@ -90,7 +90,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = User
-    template_name = "users/delete.html"
+    template_name = "users/delete_user.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

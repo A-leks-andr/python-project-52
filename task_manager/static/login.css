@@ -60,7 +60,25 @@
 }
 
 /* Стилизация кнопки */
-.submit-btn {
+.submit-btn-red {
+  width: 100%;
+  max-width: 170px;
+  background-color: #ff5c57;
+  padding: 6px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+  /* Центрируем кнопку с помощью margin: auto (display block обязателен) */
+  display: block;
+}
+
+/* Стилизация кнопки */
+.submit-btn-blue {
   width: 100%;
   max-width: 200px; /* Ограничиваем ширину кнопки */
   padding: 10px 20px;

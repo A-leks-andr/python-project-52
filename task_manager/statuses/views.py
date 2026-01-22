@@ -9,7 +9,7 @@ from task_manager.statuses.models import Status
 
 class StatusesView(ListView):
     model = Status
-    template_name = "statuses/statuses.html"
+    template_name = "statuses/statuses_list.html"
     context_object_name = "object_list"
 
     def get_context_data(self, **kwargs):
@@ -21,7 +21,7 @@ class StatusesView(ListView):
 class StatusCreateView(CreateView):
     model = Status
     fields = ["name"]
-    template_name = "statuses/create.html"
+    template_name = "statuses/create_statuses.html"
     success_url = reverse_lazy("statuses")
 
     def get_context_data(self, **kwargs):
