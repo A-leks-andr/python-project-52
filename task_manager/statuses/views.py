@@ -60,7 +60,7 @@ class StatusUpdateView(UpdateView):
         response = super().form_valid(form)
         messages.success(
             self.request,
-            'Статус "Обновленный" успешно изменён.',  # type:ignore
+            f'Статус "{self.object.name}" успешно изменён.',  # type:ignore
         )
         return response
 
