@@ -14,7 +14,7 @@
             <tr>
                 <th colspan="4">
                     
-    <a href="{% url 'create_status' %}">
+    <a href="{% url 'create_status' %}" class="a_non_dec">
     <button type="submit" class="submit-btn">Создать статус</button>
     </a>
                 </th>
@@ -33,8 +33,8 @@
                 <td>{{ obj.name }}</td>
                 <td>{{ obj.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'update' obj.id %}" class="bt_us">Изменить</a>
-                    <a href="{% url 'delete' obj.id %}" class="bt_us">Удалить</a>
+                    <a href="{% url 'update_status' obj.id %}" class="bt_us">Изменить</a>
+                    <a href="{% url 'delete_status' obj.id %}" class="bt_us">Удалить</a>
                 </td>
             </tr>
             {% endfor %}

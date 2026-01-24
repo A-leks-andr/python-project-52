@@ -95,6 +95,7 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
+        context["title"] = "Удаление пользователя"
         return context
 
     def test_func(self):

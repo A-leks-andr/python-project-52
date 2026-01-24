@@ -75,3 +75,7 @@ caption {
   /* Центрируем кнопку с помощью margin: auto (display block обязателен) */
   display: block;
 }
+
+.a_non_dec{
+    text-decoration: none;
+}
