@@ -7,7 +7,7 @@ menu_unregistered = [
 menu_registered = [
     {"url_name": "users", "name": "Пользователи"},
     {"url_name": "statuses", "name": "Статусы"},
-    {"url_name": "users", "name": "Метки"},
+    {"url_name": "labels", "name": "Метки"},
     {"url_name": "users", "name": "Задачи"},
     {"url_name": "logout", "name": "Выход", "is_logout": True},
 ]
