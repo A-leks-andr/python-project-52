@@ -1,0 +1,176 @@
+/* Базовый контейнер формы */
+.login-form {
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #EBF1F7;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  /* Устанавливаем базовое выравнивание по центру для всего содержимого */
+  text-align: left;
+}
+
+/* Группировка меток и полей */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Метки должны быть блочными элементами, чтобы работать с шириной */
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+  /* Выравниваем текст метки по центру над полем ввода */
+  text-align: left;
+}
+
+/* Стилизация полей ввода */
+.login-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  /* Центрируем блок input внутри формы с помощью margin: auto */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Стилизация кнопки */
+.submit-btn-red {
+  width: 100%;
+  max-width: 170px;
+  background-color: #ff5c57;
+  padding: 6px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+  /* Центрируем кнопку с помощью margin: auto (display block обязателен) */
+  display: block;
+}
+
+/* Стилизация кнопки */
+.submit-btn-blue {
+  width: 100%;
+  max-width: 200px; /* Ограничиваем ширину кнопки */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+  /* Центрируем кнопку с помощью margin: auto (display block обязателен) */
+  display: block;
+}
+
+
+.explanation {
+  font-size: 12px;
+  margin-bottom: 12px;
+  color: #5a5a5a;
+}
+
+table {
+    width: 80%;
+    min-width: 450px;
+    border-collapse: collapse;
+    margin: 10px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+}
+
+th {
+    padding: 0 10px;
+    text-align: left;
+}
+
+td {
+    padding: 12px 10px;
+    text-align: left;
+}
+
+thead tr {
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #EBF1F7;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #fff; 
+}
+
+caption {
+    padding: 5px 10px;
+    font-weight: bold;
+    caption-side: top;
+    text-align: left;
+    font-size: 30px;
+    color: #000;
+}
+
+.tb-wr {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.coll_w30 {
+    width: 30px;
+}
+
+.coll_w250 {
+    width: 250px;
+}
+
+.bt_us {
+    text-decoration: none; 
+    color: black;
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+/* Стилизация кнопки */
+.submit-btn {
+  width: 100%;
+  max-width: 200px; /* Ограничиваем ширину кнопки */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+  /* Центрируем кнопку с помощью margin: auto (display block обязателен) */
+  display: block;
+}
+
+.a_non_dec{
+    text-decoration: none;
+}

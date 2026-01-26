@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'task.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="tb-wr">
+<table>
+    <caption>Задачи</caption>
+    <thead>
+        <tr>
+            <th colspan="7">
+            <a href="{% url 'create_status' %}" class="a_non_dec">
+            <button type="submit" class="submit-btn-blue">Создать задачу</button>
+            </a>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="7">
+            <div class="login-form">
+                <form method="get">
+                    <div class="form-group">
+                        {{ filter.form.as_p }}
+                        <label>
+                        <input type="checkbox" name="my_tasks" value="true"
+                        {% if request.GET.my_tasks %}checked{% endif %}>
+                        Только мои задачи
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn-blue">Показать</button>
+                </form>
+            </div>
+            </th>
+            </tr>
+            <tr>
+                <th class="coll_w30">ID</th>
+                <th class="coll_w250">Имя</th>
+                <th>Статус</th>
+                <th>Автор</th>
+                <th>Исполнитель</th>
+                <th>Дата создания</th>
+                <th></th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.status.name }}</td>
+            <td>{{ task.author_full_name }}</td>
+            <td>{{ task.executor_full_name }}</td>
+            <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+            <td>
+                <a href="{% url 'update_status' task.id %}" class="bt_us">Изменить</a>
+                <a href="{% url 'delete_status' task.id %}" class="bt_us">Удалить</a>
+            </td>
+        </tr>
+            {% empty %}
+        <tr>
+            <td colspan="7">Задачи не найдены</td>
+        </tr>
+            {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}

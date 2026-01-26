@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "task_manager.users.apps.UsersConfig",
     "task_manager.statuses.apps.StatusesConfig",
     "task_manager.labels.apps.LabelsConfig",
+    "django_filters",
+    "task_manager.task.apps.TaskConfig"
 ]
 
 MIDDLEWARE = [
