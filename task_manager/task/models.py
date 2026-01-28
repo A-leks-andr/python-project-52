@@ -33,12 +33,11 @@ class Task(models.Model):
     status = models.ForeignKey(
         Status, on_delete=models.PROTECT, verbose_name="Статус"
     )
-    label = models.ForeignKey(
+    label = models.ManyToManyField(
         Label,
-        on_delete=models.PROTECT,
-        verbose_name="Метка",
+        verbose_name="Метки",
         blank=True,
-        null=True,
+        related_name="tasks_with_label",
     )
 
     class Meta:

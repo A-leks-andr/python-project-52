@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import ProtectedError
 from django.db.models.base import Model as Model
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -106,8 +107,22 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return redirect("users")
 
     def get_success_url(self):
-        username = self.object.username  # type: ignore
-        messages.success(
-            self.request, f'Пользователь "{username}" успешно удалён.'
-        )
-        return reverse_lazy("index")
+        return reverse_lazy("users")
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        try:
+            self.object.delete()
+            messages.success(
+                request,
+                f'Пользователь "{self.object.username}" успешно удалён.',  # type: ignore
+            )
+
+        except ProtectedError:
+            messages.error(
+                request,
+                f'''Нельзя удалить пользователя 
+                "{self.object.username}", потому что он используется.''',  # type: ignore
+            )
+        return redirect(self.get_success_url())

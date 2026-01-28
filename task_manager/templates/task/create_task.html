@@ -2,14 +2,14 @@
 
 {% block head %}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'task.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="login-form">
+<div class="login-form form-wd-80">
     <h1>{{ title }}</h1>
 
-    <form method="post">
+    <form method="post" action="{% url url_name %}">
     {% csrf_token %}
     <div class="form-group">
     {{ form.as_p }}
@@ -17,8 +17,6 @@
     <button type="submit" class="submit-btn-blue">{{ button }}</button>
 </form>
 
-
 </div>
-
 
 {% endblock %}

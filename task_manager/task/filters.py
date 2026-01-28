@@ -1,30 +1,24 @@
 import django_filters
 from django.contrib.auth import get_user_model
-from .models import Task, Status, Label
+
+from .models import Label, Status, Task
 
 User = get_user_model()
 
-class TaskFilter(django_filters.FilterSet): 
-    # Фильтр по статусу (выпадающий список статусов)
+
+class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
-        queryset=Status.objects.all(), label='Статус'
-        )
-    
-    # Фильтр по исполнителю (выпадающий список пользователей)
+        queryset=Status.objects.all(), label="Статус"
+    )
+
     executor = django_filters.ModelChoiceFilter(
-        queryset=User.objects.all(), label='Исполнитель'
-        )
-    
-    # Фильтр по метке (выпадающий список меток)
+        queryset=User.objects.all(), label="Исполнитель"
+    )
+
     label = django_filters.ModelChoiceFilter(
-        queryset=Label.objects.all(), label='Метка'
-        )
-    
-    # Дополнительный чекбокс/фильтр для "Только мои задачи"
-    # Этот фильтр нужно обрабатывать немного иначе в представлении, 
-    # но можно добавить базовую логику через custom filter:
+        queryset=Label.objects.all(), label="Метка"
+    )
 
     class Meta:
         model = Task
-        # Явно указываем поля, которые будем фильтровать
-        fields = ['status', 'executor', 'label'] 
+        fields = ["status", "executor", "label"]

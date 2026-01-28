@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.db.models import ProtectedError
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.base import Model as Model
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -65,7 +65,7 @@ class LabelUpdateView(UpdateView):
         return response
 
 
-class LabelDeleteView(DeleteView):
+class LabelDeleteView(LoginRequiredMixin, DeleteView):
     model = Label
     template_name = "labels/delete_label.html"
 
@@ -79,18 +79,19 @@ class LabelDeleteView(DeleteView):
     def get_success_url(self):
         return reverse_lazy("labels")
 
-    def form_valid(self, form):
-        try:
-            response = super().form_valid(form)  # type:ignore
-            messages.success(
-                self.request,
-                f'Метка "{self.object.name}" успешно удалёна.',  # type:ignore
-            )
-            return response
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
 
-        except ProtectedError:
+        if self.object.tasks_with_label.exists():  # type: ignore
             messages.error(
-                self.request,
-                f'Нельзя удалить используемую метку "{self.object.name}"',  # type:ignore
+                request,
+                f'''Нельзя удалить используемую метку 
+                "{self.object.name}", так как она привязана к задачам.''',  # type: ignore
             )
             return redirect(self.get_success_url())
+
+        messages.success(
+            self.request,
+            f'Метка "{self.object.name}" успешно удалёна.',  # type: ignore
+        )
+        return super().post(request, *args, **kwargs)

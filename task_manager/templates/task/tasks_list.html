@@ -13,14 +13,14 @@
     <thead>
         <tr>
             <th colspan="7">
-            <a href="{% url 'create_status' %}" class="a_non_dec">
+            <a href="{% url 'task_create' %}" class="a_non_dec">
             <button type="submit" class="submit-btn-blue">Создать задачу</button>
             </a>
             </th>
         </tr>
         <tr>
             <th colspan="7">
-            <div class="login-form">
+            <div class="login-form form-wd-100">
                 <form method="get">
                     <div class="form-group">
                         {{ filter.form.as_p }}

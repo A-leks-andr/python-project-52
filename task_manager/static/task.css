@@ -1,6 +1,5 @@
 /* Базовый контейнер формы */
 .login-form {
-  width: 100%;
   margin: 20px auto;
   padding: 30px;
   background-color: #EBF1F7;
@@ -10,6 +9,14 @@
   box-sizing: border-box;
   /* Устанавливаем базовое выравнивание по центру для всего содержимого */
   text-align: left;
+}
+
+.form-wd-80 {
+    width: 80%;
+}
+
+.form-wd-100 {
+    width: 100%;
 }
 
 /* Группировка меток и полей */
@@ -28,7 +35,7 @@
 }
 
 /* Стилизация полей ввода */
-.login-form select {
+.login-form select, textarea, input[type="text"] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -173,4 +180,8 @@ caption {
 
 .a_non_dec{
     text-decoration: none;
+}
+
+select[multiple][size] {
+    overflow-y: auto; 
 }
