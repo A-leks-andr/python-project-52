@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'task.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-form form-wd-50 min-wd-450">
+    <h1>{{ title }}</h1>
+
+    <p class="task_name">{{ task.name }}</p>
+    <p class="description">{{ task.description }}</p>
+
+    <div class="row">
+        <p class="label">Автор</p>
+        <p class="value">{{ task.author_full_name }}</p>
+    </div>
+    <div class="row">
+        <p class="label">Исполнитель</p>
+        <p class="value">{{ task.executor_full_name }}</p>
+    </div>
+    <div class="row">
+        <p class="label">Статус</p>
+        <p class="value">{{ task.status.name }}</p>
+    </div>
+    <div class="row">
+        <p class="label">Дата создания</p>
+        <p class="value">{{ task.created_at }}</p>
+    </div>
+    <div>
+        <p class="label">Метки: 
+        {% if task.label.exists %}
+        <ul>
+            {% for label in task.label.all %}
+            <li>
+                {{ label.name }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        Без меток
+        {% endif %}
+        </p>
+    </div>
+    <div>
+        <p class="label">
+        <a href="{% url 'update_status' task.id %}" class="bt_us">Изменить</a>
+        <a href="{% url 'delete_task' task.id %}" class="bt_us">Удалить</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

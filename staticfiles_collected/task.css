@@ -11,6 +11,10 @@
   text-align: left;
 }
 
+.form-wd-50 {
+    width: 50%;
+}
+
 .form-wd-80 {
     width: 80%;
 }
@@ -106,7 +110,7 @@ table {
 }
 
 th {
-    padding: 0 10px;
+    padding: 0 5px;
     text-align: left;
 }
 
@@ -149,6 +153,10 @@ caption {
     width: 30px;
 }
 
+.coll_w160 {
+    width: 160px;
+}
+
 .coll_w250 {
     width: 250px;
 }
@@ -157,7 +165,7 @@ caption {
     text-decoration: none; 
     color: black;
     cursor: pointer;
-    padding-right: 15px;
+    padding-right: 5px;
 }
 
 /* Стилизация кнопки */
@@ -184,4 +192,33 @@ caption {
 
 select[multiple][size] {
     overflow-y: auto; 
+}
+
+.task_name {
+    background-color: #d1cece;
+    padding: 10px;
+}
+
+.description {
+    padding: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.label {
+    width: 50%;
+    font-weight: bold;
+    padding-left: 10px;
+    min-width: 145px;
+}
+
+.row {
+    display: flex;
+}
+
+.value {
+    min-width: 145px;
+}
+
+.min-wd-450 {
+    min-width: 450px;
 }

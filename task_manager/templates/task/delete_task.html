@@ -3,13 +3,13 @@
 {% block head %}
 
 {% load static %}
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'task.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="login-form">
+<div class="login-form form-wd-50 min-wd-450">
     <h1>{{ title }}</h1>
-        Вы уверены что хотите удалить метку "<strong>{{ object.name }}</strong>"?
+        Вы уверены что хотите удалить задачу "<strong>{{ object.name }}</strong>"?
     <form method="post">
     {% csrf_token %}
     <div class="form-group">

@@ -41,22 +41,22 @@
                 <th>Статус</th>
                 <th>Автор</th>
                 <th>Исполнитель</th>
-                <th>Дата создания</th>
-                <th></th>
+                <th class="coll_w160">Дата создания</th>
+                <th class="coll_w160"></th>
             </tr>
     </thead>
     <tbody>
         {% for task in tasks %}
         <tr>
             <td>{{ task.id }}</td>
-            <td>{{ task.name }}</td>
+            <td><a href="{% url 'task_view' task.id %}" class="bt_us">{{ task.name }}</a></td>
             <td>{{ task.status.name }}</td>
             <td>{{ task.author_full_name }}</td>
             <td>{{ task.executor_full_name }}</td>
             <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
             <td>
                 <a href="{% url 'update_status' task.id %}" class="bt_us">Изменить</a>
-                <a href="{% url 'delete_status' task.id %}" class="bt_us">Удалить</a>
+                <a href="{% url 'delete_task' task.id %}" class="bt_us">Удалить</a>
             </td>
         </tr>
             {% empty %}
