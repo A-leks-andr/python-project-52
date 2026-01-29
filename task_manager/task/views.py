@@ -5,7 +5,7 @@ from django.db.models.functions import Concat
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from task_manager.menu import menu_registered
 from task_manager.task.filters import TaskFilter
@@ -65,7 +65,6 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Создать задачу"
-        context["url_name"] = "task_create"
         context["button"] = "Создать"
         return context
 
@@ -125,3 +124,22 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
         messages.success(self.request, "Задача успешно удалена")
         return super().post(request, *args, **kwargs)
+
+
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = CreateTaskForm
+    template_name = "task/create_task.html"
+    success_url = reverse_lazy("tasks")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = menu_registered
+        context["title"] = "Изменить задачу"
+        context["button"] = "Изменить"
+        return context
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Задача успешно изменена.")
+        return response

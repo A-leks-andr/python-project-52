@@ -9,7 +9,7 @@
 <div class="login-form form-wd-80">
     <h1>{{ title }}</h1>
 
-    <form method="post" action="{% url url_name %}">
+    <form method="post">
     {% csrf_token %}
     <div class="form-group">
     {{ form.as_p }}

@@ -26,7 +26,7 @@
     </div>
     <div class="row">
         <p class="label">Дата создания</p>
-        <p class="value">{{ task.created_at }}</p>
+        <p class="value">{{ task.created_at|date:"d.m.Y H:i" }}</p>
     </div>
     <div>
         <p class="label">Метки: 
@@ -45,8 +45,8 @@
     </div>
     <div>
         <p class="label">
-        <a href="{% url 'update_status' task.id %}" class="bt_us">Изменить</a>
-        <a href="{% url 'delete_task' task.id %}" class="bt_us">Удалить</a>
+        <a href="{% url 'task_update' task.id %}" class="bt_us">Изменить</a>
+        <a href="{% url 'task_delete' task.id %}" class="bt_us">Удалить</a>
         </p>
     </div>
 </div>
