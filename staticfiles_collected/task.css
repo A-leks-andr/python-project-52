@@ -1,7 +1,7 @@
 /* Базовый контейнер формы */
 .login-form {
   margin: 20px auto;
-  padding: 30px;
+  padding: 20px;
   background-color: #EBF1F7;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -221,4 +221,8 @@ select[multiple][size] {
 
 .min-wd-450 {
     min-width: 450px;
+}
+
+.min-wd-400 {
+    min-width: 400px;
 }
