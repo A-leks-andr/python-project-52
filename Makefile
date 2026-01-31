@@ -28,7 +28,7 @@ test:
 
 render-start:
 	uv run manage.py migrate
-	uv run gunicorn task_manager.wsgi:application
+	uv run gunicorn task_manager.wsgi
 
 start-server:
 	python manage.py runserver 0.0.0.0:3000
