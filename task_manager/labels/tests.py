@@ -41,8 +41,8 @@ class LabelCRUDTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Label.objects.filter(name="Срочно").exists())
         self.assertContains(
-            response, f'Метка &quot;{data['name']}&quot; успешно создана.'
-            )
+            response, f"Метка &quot;{data['name']}&quot; успешно создана."
+        )
 
     def test_label_create_view_post_invalid_data(self):
         """Попытка создания пустой метки."""
@@ -60,8 +60,8 @@ class LabelCRUDTests(TestCase):
         self.assertEqual(self.label1.name, "Обновленный")
         # Проверка сообщения через "е"
         self.assertContains(
-            response, f'Метка &quot;{data['name']}&quot; успешно изменена.'
-            )
+            response, f"Метка &quot;{data['name']}&quot; успешно изменена."
+        )
 
     def test_label_delete_view_post_success(self):
         """Успешное удаление свободной метки."""
@@ -72,7 +72,7 @@ class LabelCRUDTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFalse(Label.objects.filter(pk=self.label1.pk).exists())
         self.assertContains(
-            response, f'Метка &quot;{self.label1.name}&quot; успешно удалена.'
+            response, f"Метка &quot;{self.label1.name}&quot; успешно удалена."
         )
 
     def test_label_delete_view_used_in_task(self):
@@ -90,6 +90,6 @@ class LabelCRUDTests(TestCase):
         self.assertTrue(Label.objects.filter(pk=self.label1.pk).exists())
 
         # Проверяем сообщение об ошибке (должно в точности совпадать с View)
-        self.assertContains(response, 'Нельзя удалить используемую метку')
-        self.assertContains(response, 'так как она привязана к задачам')
+        self.assertContains(response, "Нельзя удалить используемую метку")
+        self.assertContains(response, "так как она привязана к задачам")
         self.assertContains(response, self.label1.name)
