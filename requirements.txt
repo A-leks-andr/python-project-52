@@ -8,3 +8,4 @@ gunicorn
 whitenoise
 django-bootstrap4
 pytest-django
+pytest
