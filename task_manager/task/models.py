@@ -46,3 +46,13 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_author_name(self):
+        full_name = self.author.get_full_name()
+        return full_name if full_name else self.author.username
+
+    def get_executor_name(self):
+        if not self.executor:
+            return ""
+        full_name = self.executor.get_full_name()
+        return full_name if full_name else self.executor.username

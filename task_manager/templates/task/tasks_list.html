@@ -24,11 +24,7 @@
                 <form method="get">
                     <div class="form-group">
                         {{ filter.form.as_p }}
-                        <label>
-                        <input type="checkbox" name="my_tasks" value="true"
-                        {% if request.GET.my_tasks %}checked{% endif %}>
-                        Только мои задачи
-                        </label>
+                    
                     </div>
                     <button type="submit" class="submit-btn-blue">Показать</button>
                 </form>
@@ -53,8 +49,8 @@
                 <strong>{{ task.name }}</strong>
             </a></td>
             <td>{{ task.status.name }}</td>
-            <td>{{ task.author_full_name }}</td>
-            <td>{{ task.executor_full_name }}</td>
+            <td>{{ task.get_author_name }}</td>
+            <td>{{ task.get_executor_name }}</td>
             <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
             <td>
                 <a href="{% url 'task_update' task.id %}" class="bt_us">Изменить</a>

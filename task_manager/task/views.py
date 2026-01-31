@@ -1,11 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import CharField, Value
-from django.db.models.functions import Concat
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django_filters.views import FilterView
 
 from task_manager.menu import menu_registered
 from task_manager.task.filters import TaskFilter
@@ -13,40 +12,22 @@ from task_manager.task.forms import CreateTaskForm
 from task_manager.task.models import Task
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(LoginRequiredMixin, FilterView, ListView):
     model = Task
     template_name = "task/tasks_list.html"
     context_object_name = "tasks"
-    ordering = ["id"]
+    filterset_class = TaskFilter
 
     def get_queryset(self):
-        queryset = Task.objects.all().annotate(
-            author_full_name=Concat(
-                "author__first_name",
-                Value(" "),
-                "author__last_name",
-                output_field=CharField(),
-            ),
-            executor_full_name=Concat(
-                "executor__first_name",
-                Value(" "),
-                "executor__last_name",
-                output_field=CharField(),
-            ),
+        return (
+            Task.objects.select_related("author", "executor", "status")
+            .all()
+            .order_by("id")
         )
-
-        self.filter_set = TaskFilter(self.request.GET, queryset=queryset)
-
-        if self.request.GET.get("my_tasks"):
-            queryset = queryset.filter(author=self.request.user)
-            self.filter_set = TaskFilter(self.request.GET, queryset=queryset)
-
-        return self.filter_set.qs.distinct().order_by("id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
-        context["filter"] = self.filter_set
         return context
 
 
@@ -74,27 +55,6 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     template_name = "task/task.html"
     context_object_name = "task"
 
-    def get_queryset(self):
-        queryset = (
-            super()
-            .get_queryset()
-            .annotate(
-                author_full_name=Concat(
-                    "author__first_name",
-                    Value(" "),
-                    "author__last_name",
-                    output_field=CharField(),
-                ),
-                executor_full_name=Concat(
-                    "executor__first_name",
-                    Value(" "),
-                    "executor__last_name",
-                    output_field=CharField(),
-                ),
-            )
-        )
-        return queryset
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
@@ -102,9 +62,10 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Task
     template_name = "task/delete_task.html"
+    success_url = reverse_lazy("tasks")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -113,17 +74,20 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
         context["button"] = "Подтвердить удаление"
         return context
 
-    def get_success_url(self):
-        return reverse_lazy("tasks")
+    def test_func(self):
+        """Проверка: текущий пользователь должен быть автором задачи."""
+        task = self.get_object()
+        return task.author == self.request.user  # type: ignore
 
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if self.object.author != self.request.user:  # type: ignore
-            messages.error(request, "Нельзя удалить чужую задачу")
-            return redirect(self.get_success_url())
+    def handle_no_permission(self):
+        """Что делать, если тест test_func вернул False."""
+        messages.error(self.request, "Задачу может удалить только её автор")
+        return redirect("tasks")
 
+    def form_valid(self, form):
+        """Сообщение об успехе при успешном удалении."""
         messages.success(self.request, "Задача успешно удалена")
-        return super().post(request, *args, **kwargs)
+        return super().form_valid(form)  # type: ignore
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):

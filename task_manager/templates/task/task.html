@@ -15,11 +15,11 @@
 
     <div class="row">
         <p class="label">Автор</p>
-        <p class="value">{{ task.author_full_name }}</p>
+        <p class="value">{{ task.get_author_name }}</p>
     </div>
     <div class="row">
         <p class="label">Исполнитель</p>
-        <p class="value">{{ task.executor_full_name }}</p>
+        <p class="value">{{ task.get_executor_name }}</p>
     </div>
     <div class="row">
         <p class="label">Статус</p>
