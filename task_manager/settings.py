@@ -66,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware" ,
 ]
 
 ROOT_URLCONF = "task_manager.urls"
@@ -151,3 +152,15 @@ USE_TZ = True
 LOGIN_URL = 'login'
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_collected")
+
+
+ROLLBAR = { 
+    'access_token' : '67ecf02b6e014d12b33463136f7bef22' , 
+    'environment' : 'development' if DEBUG else 'production' ,   
+    'code_version' : '1.0' , 
+    'root' : BASE_DIR ,
+}
+
+import rollbar
+
+rollbar.init(**ROLLBAR)

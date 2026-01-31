@@ -65,3 +65,11 @@ class UserLogoutView(LogoutView):
         username = request.user.username
         messages.success(request, f"Вы вышли {username}")
         return super().dispatch(request, *args, **kwargs)
+
+
+def rollbar_test(request):
+    a = None
+    a.hello() # type: ignore
+    return HttpResponse(
+        "Hello, world. You're at the pollapp index."
+    )
