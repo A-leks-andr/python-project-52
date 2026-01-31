@@ -156,7 +156,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_collected")
 
 
 ROLLBAR = { 
-    'access_token' : '67ecf02b6e014d12b33463136f7bef22' , 
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
     'environment' : 'development' if DEBUG else 'production' ,   
     'code_version' : '1.0' , 
     'root' : BASE_DIR ,
