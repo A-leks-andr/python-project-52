@@ -1,15 +1,15 @@
 install:
 	pip install uv
-	pip install -r requirements.txt
+	uv sync
 
 sync:
 	uv sync
 
 migrations:
-	python manage.py makemigrations
+	uv run manage.py makemigrations
 
 migrate:
-	python manage.py migrate
+	uv run manage.py migrate
 
 collectstatic:
 	uv run manage.py collectstatic --no-input
