@@ -8,13 +8,13 @@ sync:
 	uv sync
 
 migrations:
-	python manage.py makemigrations
+	uv run manage.py makemigrations
 
 migrate:
-	python manage.py migrate
+	uv run manage.py migrate
 
 collectstatic:
-	python manage.py collectstatic --no-input
+	uv run manage.py collectstatic --no-input
 
 build:
 	./build.sh
@@ -26,14 +26,14 @@ format:
 	uv run ruff format
 
 render-start:
-	python manage.py migrate
-	gunicorn task_manager.wsgi:application
+	uv run manage.py migrate
+	uv run gunicorn task_manager.wsgi:application
 
 start:
 	uv run manage.py runserver
 
 update-css:
-	python manage.py collectstatic --noinput
+	uv run manage.py collectstatic --noinput
 
 shell:
 	uv run manage.py shell

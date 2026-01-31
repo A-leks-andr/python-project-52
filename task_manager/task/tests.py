@@ -168,7 +168,7 @@ class TaskTests(TestCase):
         )
 
         # Фильтруем по статусу 'Новый' (id из setUp)
-        url = f"{self.tasks_list_url}?status={self.status_new.id}" # type: ignore
+        url = f"{self.tasks_list_url}?status={self.status_new.id}"  # type: ignore
         response = self.client.get(url)
 
         self.assertContains(response, self.task.name)

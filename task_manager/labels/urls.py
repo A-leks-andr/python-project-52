@@ -11,7 +11,7 @@ urlpatterns = [
         name="update_label",
     ),
     path(
-        "<int:pk>/delete_label",
+        "<int:pk>/delete_label/",
         views.LabelDeleteView.as_view(),
         name="delete_label",
     ),

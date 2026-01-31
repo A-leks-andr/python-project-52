@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -161,6 +162,10 @@ ROLLBAR = {
     'root' : BASE_DIR ,
 }
 
-import rollbar
-
-rollbar.init(**ROLLBAR)
+if 'test' in sys.argv:
+    # 1. Полностью обнуляем настройки Rollbar
+    ROLLBAR = {}
+    
+    # 2. Удаляем мидлвару Rollbar, чтобы она даже не пыталась запуститься
+    if 'rollbar.contrib.django.middleware.RollbarNotifierMiddleware' in MIDDLEWARE:
+        MIDDLEWARE.remove('rollbar.contrib.django.middleware.RollbarNotifierMiddleware')

@@ -60,7 +60,7 @@ class LabelUpdateView(UpdateView):
         response = super().form_valid(form)
         messages.success(
             self.request,
-            f'Метка "{self.object.name}" успешно изменёна.',  # type:ignore
+            f'Метка "{self.object.name}" успешно изменена.',  # type:ignore
         )
         return response
 
@@ -92,6 +92,6 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
 
         messages.success(
             self.request,
-            f'Метка "{self.object.name}" успешно удалёна.',  # type: ignore
+            f'Метка "{self.object.name}" успешно удалена.',  # type: ignore
         )
         return super().post(request, *args, **kwargs)
