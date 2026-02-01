@@ -111,8 +111,6 @@ if "DATABASE_URL" in os.environ:
         conn_max_age=600, 
         conn_health_checks=True
     )
-    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
