@@ -41,7 +41,7 @@
 {% if messages %}
     {% for message in messages %}
     <!-- Используем свои классы. message.tags будет 'info', 'warning', 'error' и т.д. -->
-    <div class="my-alert my-alert-{{ message.tags }}">
+    <div class="my-alert alert my-alert-{{ message.tags }}">
         {{ message }}
         <!-- Наша собственная кнопка закрытия -->
         <span class="my-close-btn" aria-label="Close">&times;</span>

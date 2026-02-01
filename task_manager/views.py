@@ -39,11 +39,12 @@ class UserLoginView(View):
         form = self.form_class(request, data=request.POST)
 
         if form.is_valid():
-            username = form.cleaned_data.get("username")
+            # username = form.cleaned_data.get("username")
 
             user = form.get_user()
             login(request, user)
-            messages.success(request, f"Добро пожаловать, {username}!")
+            # messages.success(request, f"Добро пожаловать, {username}!")
+            messages.success(request, "Вы залогинены")
 
             return redirect(self.success_url)
         else:
