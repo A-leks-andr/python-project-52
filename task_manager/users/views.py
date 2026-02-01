@@ -114,8 +114,8 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         try:
             self.object.delete()
             messages.success(
-                request,
-                f'Пользователь "{self.object.username}" успешно удалён.',  # type: ignore
+                request, "Пользователь успешно удален"
+                #f'Пользователь "{self.object.username}" успешно удалён.',
             )
 
         except ProtectedError:
