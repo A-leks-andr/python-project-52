@@ -15,6 +15,9 @@ class LabelsView(ListView):
     template_name = "labels/labels_list.html"
     context_object_name = "object_list"
 
+    def get_queryset(self):
+        return Label.objects.all().order_by('id')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
@@ -27,18 +30,23 @@ class LabelCreateView(CreateView):
     template_name = "labels/create_label.html"
     success_url = reverse_lazy("labels")
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.label_suffix = ""  # Убирает ":" после слова "Имя"
+        return form
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Создать метку"
-        context["button"] = "Сохранить метку"
+        context["button"] = "Создать"
         return context
 
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request,
-            f'Метка "{self.object.name}" успешно создана.',  # type:ignore
+            self.request, "Метка успешно создана"
+            # f'Метка "{self.object.name}" успешно создана.',  # type:ignore
         )
         return response
 
@@ -53,14 +61,14 @@ class LabelUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Изменить метку"
-        context["button"] = "Сохранить изменения"
+        context["button"] = "Изменить"
         return context
 
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request,
-            f'Метка "{self.object.name}" успешно изменена.',  # type:ignore
+            self.request, "Метка успешно изменена"
+            #f'Метка "{self.object.name}" успешно изменена.',  # type:ignore
         )
         return response
 
@@ -73,7 +81,7 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Удалить метку"
-        context["button"] = "Подтвердить удаление"
+        context["button"] = "Да, удалить"
         return context
 
     def get_success_url(self):
@@ -84,14 +92,15 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
 
         if self.object.tasks_with_label.exists():  # type: ignore
             messages.error(
-                request,
-                f'''Нельзя удалить используемую метку 
-                "{self.object.name}", так как она привязана к задачам.''',  # type: ignore
+                request, "Невозможно удалить метку, потому что она используется"
+               # f'''Нельзя удалить используемую метку 
+               # "{self.object.name}", так как она привязана к задачам.''',  
+               # type: ignore
             )
             return redirect(self.get_success_url())
 
         messages.success(
-            self.request,
-            f'Метка "{self.object.name}" успешно удалена.',  # type: ignore
+            self.request, "Метка успешно удалена"
+            # f'Метка "{self.object.name}" успешно удалена.',  # type: ignore
         )
         return super().post(request, *args, **kwargs)
