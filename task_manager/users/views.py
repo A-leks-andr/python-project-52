@@ -82,8 +82,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         else:
             messages.success(
                 self.request,
-                "Данные пользователя успешно обновлены "
-                "(пароль остался прежним).",
+                "Пользователь успешно изменен",
             )
         user.save()
         return super().form_valid(form)
