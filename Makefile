@@ -24,7 +24,7 @@ format:
 	uv run ruff format
 
 test:
-	python manage.py test
+	uv run manage.py test
 
 render-start:
 	uv run manage.py migrate

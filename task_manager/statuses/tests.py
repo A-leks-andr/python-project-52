@@ -37,7 +37,7 @@ class StatusCRUDTests(TestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Статус 'Новый' успешно создан.")
+        self.assertEqual(str(messages[0]), "Статус успешно создан")
 
     def test_status_create_view_post_invalid_data(self):
         data = {"name": ""}
@@ -59,7 +59,7 @@ class StatusCRUDTests(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(
-            str(messages[0]), f'Статус "{self.status1.name}" успешно изменён.'
+            str(messages[0]), 'Статус успешно изменен'
         )
 
     def test_status_delete_view_post_success(self):
@@ -72,5 +72,5 @@ class StatusCRUDTests(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(
-            str(messages[0]), f'Статус "{self.status1.name}" успешно удалён.'
+            str(messages[0]), 'Статус успешно удален'
         )
