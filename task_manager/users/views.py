@@ -43,7 +43,7 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         messages.success(
-            self.request, "Вы успешно зарегистрированы! Пожалуйста, войдите."
+            self.request, "Пользователь успешно зарегистрирован"
         )
         return super().form_valid(form)
 
