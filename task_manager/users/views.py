@@ -66,7 +66,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Изменения пользователя"
-        context["button"] = "Сохранить изменения"
+        context["button"] = "Изменить"
         return context
 
     def form_valid(self, form):
