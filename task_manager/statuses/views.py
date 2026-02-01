@@ -72,8 +72,8 @@ class StatusUpdateView(UpdateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request,
-            f'Статус "{self.object.name}" успешно изменён.',  # type:ignore
+            self.request, "Статус успешно изменен"
+            #f'Статус "{self.object.name}" успешно изменён.',  # type:ignore
         )
         return response
 
@@ -96,7 +96,7 @@ class StatusDeleteView(DeleteView):
         try:
             response = super().form_valid(form)  # type:ignore
             messages.success(
-                self.request, "Статус успешно изменен"
+                self.request, "Статус успешно удален"
                 #f'Статус "{self.object.name}" успешно удалён.',  # type:ignore
             )
             return response
