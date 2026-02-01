@@ -27,11 +27,16 @@ class StatusCreateView(CreateView):
     template_name = "statuses/create_status.html"
     success_url = reverse_lazy("statuses")
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.label_suffix = ""  # Убирает ":" после слова "Имя"
+        return form
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Создать статус"
-        context["button"] = "Сохранить статус"
+        context["button"] = "Создать"
         return context
 
     def form_valid(self, form):
