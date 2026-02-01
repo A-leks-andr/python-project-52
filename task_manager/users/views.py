@@ -77,7 +77,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if password:
             user.set_password(password)
             messages.success(
-                self.request, "Данные пользователя и пароль успешно обновлены."
+                self.request, "Пользователь успешно изменен"
             )
         else:
             messages.success(
