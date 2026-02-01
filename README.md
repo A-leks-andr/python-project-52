@@ -2,8 +2,7 @@
 [![Actions Status](https://github.com/A-leks-andr/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/A-leks-andr/python-project-52/actions)
 
 ### My tests and linter status:
-[![Django CI](https://github.com/A-leks_-andr/python-project-52/actions/workflows/my_check.yml/
-badge.svg)](https://github.com/A-leks-andr/python-project-52/actions)
+[![Django CI](https://github.com/A-leks-andr/python-project-52/actions/workflows/my_check.yml/badge.svg)](https://github.com/A-leks-andr/python-project-52/actions)
 
 
 # Task Manager
