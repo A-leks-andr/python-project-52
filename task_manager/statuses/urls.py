@@ -6,12 +6,12 @@ urlpatterns = [
     path("", views.StatusesView.as_view(), name="statuses"),
     path("create/", views.StatusCreateView.as_view(), name="create_status"),
     path(
-        "<int:pk>/update_status/",
+        "<int:pk>/update/",
         views.StatusUpdateView.as_view(),
         name="update_status",
     ),
     path(
-        "<int:pk>/delete_status/",
+        "<int:pk>/delete/",
         views.StatusDeleteView.as_view(),
         name="delete_status",
     ),
