@@ -42,8 +42,8 @@ class StatusCreateView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request,
-            f"Статус '{self.object.name}' успешно создан.",  # type:ignore
+            self.request, "Статус успешно создан"
+            # f"Статус '{self.object.name}' успешно создан.",  # type:ignore
         )
         return response
 
