@@ -31,9 +31,9 @@
     </div>
     <div>
         <p class="label">Метки: 
-        {% if task.label.exists %}
+        {% if task.labels.exists %}
         <ul>
-            {% for label in task.label.all %}
+            {% for label in task.labels.all %}
             <li>
                 {{ label.name }}
             </li>
