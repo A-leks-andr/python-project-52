@@ -59,7 +59,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def handle_no_permission(self):
         messages.error(
             self.request, "У вас нет прав для изменения другого пользователя."
-            )
+        )
         return redirect("users")
 
     def get_context_data(self, **kwargs):
@@ -72,17 +72,12 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         user = form.save(commit=False)
 
-        password = form.cleaned_data.get("password_1")
+        password = form.cleaned_data.get("password1")
 
-        if password:
-            user.set_password(password)
-            messages.success(self.request, "Пользователь успешно изменен")
-        else:
-            messages.success(
-                self.request,
-                "Пользователь успешно изменен",
-            )
+        user.set_password(password)
         user.save()
+
+        messages.success(self.request, "Пользователь успешно изменен")
         return super().form_valid(form)
 
 
@@ -102,7 +97,7 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def handle_no_permission(self):
         messages.error(
             self.request, "У вас нет прав для изменения другого пользователя."
-            )
+        )
         return redirect("users")
 
     def get_success_url(self):

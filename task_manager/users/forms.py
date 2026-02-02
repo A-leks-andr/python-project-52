@@ -43,7 +43,7 @@ class UserUpdateDataForm(forms.ModelForm):
         widget=forms.PasswordInput(
             attrs={"autocomplete": "new-password", "minlength": "3"}
         ),
-        required=False,
+        required=True,
         help_text="Оставьте пустым, если не хотите менять пароль.",
         validators=[MIN_LENGTH_VALIDATOR],
     )
@@ -52,7 +52,7 @@ class UserUpdateDataForm(forms.ModelForm):
         widget=forms.PasswordInput(
             attrs={"autocomplete": "new-password", "minlength": "3"}
         ),
-        required=False,
+        required=True,
         help_text="Введите новый пароль еще раз.",
         validators=[MIN_LENGTH_VALIDATOR],
     )

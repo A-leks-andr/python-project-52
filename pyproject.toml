@@ -38,7 +38,7 @@ DJANGO_SETTINGS_MODULE = "task_manager.settings"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
 
 # Заменяет --cov=task_manager и добавляет отчет в терминале
-addopts = "--cov=task_manager --cov-report=xml"
+addopts = "--cov=task_manager --cov-report=term-missing  --cov-report=xml"
 
 [tool.coverage.run]
 
@@ -50,6 +50,7 @@ omit = [
     "*/asgi.py",
     "manage.py",
     "*/__init__.py",
+    "*/tests.py",
 ]
 
 [tool.coverage.report]
