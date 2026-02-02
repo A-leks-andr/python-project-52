@@ -11,3 +11,8 @@ main.py
 db.sqlite3
 staticfiles_collected/admin
 instruction.txt
+
+.coverage
+htmlcov/
+coverage.xml
+*.lcov

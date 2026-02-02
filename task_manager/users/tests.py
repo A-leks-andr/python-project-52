@@ -26,12 +26,10 @@ class UserModelTests(TestCase):
         self.assertEqual(user.first_name, "John")
         self.assertEqual(user.last_name, "Doe")
         self.assertTrue(user.is_active)
-        # Проверка, что стандартное поле 'date_joined'
-        # было автоматически заполнено
+        
         self.assertIsNotNone(user.date_joined)
         self.assertLess(user.date_joined, timezone.now())
-        # Убедимся, что дата в прошлом или сейчас
-
+        
     def test_update_user_details(self):
         """
         Проверка изменения полей пользователя (first_name, last_name).
