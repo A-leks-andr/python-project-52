@@ -57,7 +57,9 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == user_object
 
     def handle_no_permission(self):
-        messages.error(self.request, "Вы не можете изменить чужую запись.")
+        messages.error(
+            self.request, "У вас нет прав для изменения другого пользователя."
+            )
         return redirect("users")
 
     def get_context_data(self, **kwargs):
@@ -98,7 +100,9 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.get_object().pk == self.request.user.pk
 
     def handle_no_permission(self):
-        messages.error(self.request, "Чужую запись нельзя удалить.")
+        messages.error(
+            self.request, "У вас нет прав для изменения другого пользователя."
+            )
         return redirect("users")
 
     def get_success_url(self):
