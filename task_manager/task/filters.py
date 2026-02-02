@@ -13,7 +13,8 @@ class TaskFilter(django_filters.FilterSet):
     )
 
     executor = django_filters.ModelChoiceFilter(
-        queryset=User.objects.all(), label="Исполнитель"
+        queryset=User.objects.all(),
+        label="Исполнитель",
     )
 
     label = django_filters.ModelChoiceFilter(
@@ -25,6 +26,12 @@ class TaskFilter(django_filters.FilterSet):
         method="filter_my_tasks",
         widget=forms.CheckboxInput(),
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form.label_suffix = ""
+        executor_field = self.form.fields['executor']
+        executor_field.label_from_instance = lambda obj: obj.get_full_name()  # type: ignore
 
     def filter_my_tasks(self, queryset, name, value):
         if value:
