@@ -37,6 +37,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = "task/create_task.html"
     success_url = reverse_lazy("tasks")
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.label_suffix = ""  # Убирает ":" после слова "Имя"
+        return form
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         messages.success(self.request, "Задача успешно создана.")
@@ -81,7 +86,7 @@ class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def handle_no_permission(self):
         """Что делать, если тест test_func вернул False."""
-        messages.error(self.request, "Задачу может удалить только её автор")
+        messages.error(self.request, "Задачу может удалить только ее автор")
         return redirect("tasks")
 
     def form_valid(self, form):
@@ -95,6 +100,11 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     form_class = CreateTaskForm
     template_name = "task/create_task.html"
     success_url = reverse_lazy("tasks")
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.label_suffix = ""  # Убирает ":" после слова "Имя"
+        return form
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

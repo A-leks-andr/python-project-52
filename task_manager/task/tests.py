@@ -60,13 +60,12 @@ class TaskTests(TestCase):
         self.client.force_login(self.user_another)
         response = self.client.get(self.tasks_list_url)
         self.assertEqual(response.status_code, 200)
-        # ОШИБКА БЫЛА ТУТ: ищем полное имя, которое выводит модель
         self.assertContains(response, self.task.get_author_name())
 
     def test_task_list_view_unauthenticated(self):
         """Неавторизованный пользователь перенаправляется на страницу входа."""
         response = self.client.get(self.tasks_list_url)
-        self.assertEqual(response.status_code, 302)  # Ожидаем редирект
+        self.assertEqual(response.status_code, 302)
         self.assertRedirects(
             response, reverse("login") + "?next=" + self.tasks_list_url
         )
@@ -76,7 +75,6 @@ class TaskTests(TestCase):
         self.client.force_login(self.user_another)
         response = self.client.get(self.task_url_detail)
         self.assertEqual(response.status_code, 200)
-        # ОШИБКА БЫЛА ТУТ: ищем результат get_author_name(), а не username
         self.assertContains(response, self.task.get_author_name())
 
     # --- CREATE Tests ---
@@ -92,22 +90,18 @@ class TaskTests(TestCase):
             "executor": self.user_executor.id,  # type: ignore
             "status": self.status_in_progress.id,  # type: ignore
             "label": [self.label_critical.id],  # type: ignore
-            # 'author' должен устанавливаться автоматически в form_valid()
         }
 
         response = self.client.post(
             self.task_create_url, form_data, follow=True
         )
         self.assertEqual(response.status_code, 200)
-        # Follow=True, проверяем конечную страницу (tasks list)
 
-        # Проверяем, что объект создан в БД
         self.assertTrue(
             Task.objects.filter(name="Новая тестовая задача 2").exists()
         )
         new_task = Task.objects.get(name="Новая тестовая задача 2")
         self.assertEqual(new_task.author, self.user_another)
-        # Проверяем, что автор установлен текущим пользователем
 
     # --- UPDATE Tests ---
 
@@ -129,7 +123,6 @@ class TaskTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
 
-        # Проверяем, что объект в БД обновился
         self.task.refresh_from_db()
         self.assertEqual(self.task.name, "Обновленное имя задачи")
         self.assertEqual(self.task.status, self.status_in_progress)
@@ -155,7 +148,7 @@ class TaskTests(TestCase):
         # Задача ДОЛЖНА остаться в базе
         self.assertTrue(Task.objects.filter(pk=self.task.pk).exists())
         # Проверяем наличие ошибки
-        self.assertContains(response, "Задачу может удалить только её автор")
+        self.assertContains(response, "Задачу может удалить только ее автор")
 
     def test_filter_by_status(self):
         """Проверка фильтрации по статусу."""
