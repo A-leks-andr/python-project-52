@@ -24,9 +24,6 @@ format:
 	uv run ruff format
 
 test:
-	uv run manage.py test
-
-test-cov:
 	uv run pytest
 
 render-start:
