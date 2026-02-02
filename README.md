@@ -3,7 +3,6 @@
 ### My tests and linter status:
 [![My check](https://github.com/A-leks-andr/python-project-52/actions/workflows/my_check.yml/badge.svg)](https://github.com/A-leks-andr/python-project-52/actions)
 
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=A-leks-andr_python-project-52)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=A-leks-andr_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=A-leks-andr_python-project-52)
 
 # Task Manager

@@ -40,6 +40,18 @@ python_files = ["tests.py", "test_*.py", "*_tests.py"]
 # Заменяет --cov=task_manager и добавляет отчет в терминале
 addopts = "--cov=task_manager --cov-report=xml"
 
+[tool.coverage.run]
+
+source = ["task_manager"]
+omit = [
+    "*/migrations/*",
+    "*/settings.py",
+    "*/wsgi.py",
+    "*/asgi.py",
+    "manage.py",
+    "*/__init__.py",
+]
+
 [tool.coverage.report]
 show_missing = true
 skip_empty = true
