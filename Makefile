@@ -26,6 +26,9 @@ format:
 test:
 	uv run manage.py test
 
+test-cov:
+	uv run pytest
+
 render-start:
 	uv run manage.py migrate
 	uv run gunicorn task_manager.wsgi

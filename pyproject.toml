@@ -29,3 +29,18 @@ dev = [
     "pytest-cov>=7.0.0",
     "pytest-django>=4.11.1",
 ]
+
+[tool.pytest.ini_options]
+# Заменяет --ds=task_manager.settings
+DJANGO_SETTINGS_MODULE = "task_manager.settings"
+
+# Заменяет -o "python_files=tests.py test_*.py"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+# Заменяет --cov=task_manager и добавляет отчет в терминале
+addopts = "--cov=task_manager --cov-report=xml"
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+precision = 1
