@@ -25,7 +25,7 @@ class CreateTaskForm(forms.ModelForm):
         label="Статус",
     )
 
-    label = forms.ModelMultipleChoiceField(
+    labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
         label="Метки",
