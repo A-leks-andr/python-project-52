@@ -16,7 +16,7 @@ class LabelsView(ListView):
     context_object_name = "object_list"
 
     def get_queryset(self):
-        return Label.objects.all().order_by('id')
+        return Label.objects.all().order_by("id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -45,7 +45,8 @@ class LabelCreateView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request, "Метка успешно создана"
+            self.request,
+            "Метка успешно создана",
             # f'Метка "{self.object.name}" успешно создана.',  # type:ignore
         )
         return response
@@ -72,8 +73,9 @@ class LabelUpdateView(UpdateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request, "Метка успешно изменена"
-            #f'Метка "{self.object.name}" успешно изменена.',  # type:ignore
+            self.request,
+            "Метка успешно изменена",
+            # f'Метка "{self.object.name}" успешно изменена.',  # type:ignore
         )
         return response
 
@@ -97,15 +99,17 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
 
         if self.object.tasks_with_label.exists():  # type: ignore
             messages.error(
-                request, "Невозможно удалить метку, потому что она используется"
-               # f'''Нельзя удалить используемую метку 
-               # "{self.object.name}", так как она привязана к задачам.''',  
-               # type: ignore
+                request,
+                "Невозможно удалить метку, потому что она используется",
+                # f'''Нельзя удалить используемую метку
+                # "{self.object.name}", так как она привязана к задачам.''',
+                # type: ignore
             )
             return redirect(self.get_success_url())
 
         messages.success(
-            self.request, "Метка успешно удалена"
+            self.request,
+            "Метка успешно удалена",
             # f'Метка "{self.object.name}" успешно удалена.',  # type: ignore
         )
         return super().post(request, *args, **kwargs)

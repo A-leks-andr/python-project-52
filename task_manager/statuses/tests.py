@@ -58,9 +58,7 @@ class StatusCRUDTests(TestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(
-            str(messages[0]), 'Статус успешно изменен'
-        )
+        self.assertEqual(str(messages[0]), "Статус успешно изменен")
 
     def test_status_delete_view_post_success(self):
         response = self.client.post(self.delete_url, follow=True)
@@ -71,6 +69,4 @@ class StatusCRUDTests(TestCase):
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(
-            str(messages[0]), 'Статус успешно удален'
-        )
+        self.assertEqual(str(messages[0]), "Статус успешно удален")

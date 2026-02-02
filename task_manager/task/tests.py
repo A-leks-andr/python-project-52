@@ -42,7 +42,7 @@ class TaskTests(TestCase):
             executor=self.user_executor,
             status=self.status_new,
         )
-        self.task.label.add(self.label_critical)
+        self.task.labels.add(self.label_critical)
         self.task_url_detail = reverse("task_view", kwargs={"pk": self.task.pk})
         self.task_url_update = reverse(
             "task_update", kwargs={"pk": self.task.pk}

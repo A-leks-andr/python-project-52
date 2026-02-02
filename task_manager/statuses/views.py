@@ -14,9 +14,9 @@ class StatusesView(ListView):
     model = Status
     template_name = "statuses/statuses_list.html"
     context_object_name = "object_list"
-    
+
     def get_queryset(self):
-        return Status.objects.all().order_by('id')
+        return Status.objects.all().order_by("id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -45,7 +45,8 @@ class StatusCreateView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request, "Статус успешно создан"
+            self.request,
+            "Статус успешно создан",
             # f"Статус '{self.object.name}' успешно создан.",  # type:ignore
         )
         return response
@@ -72,8 +73,9 @@ class StatusUpdateView(UpdateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(
-            self.request, "Статус успешно изменен"
-            #f'Статус "{self.object.name}" успешно изменён.',  # type:ignore
+            self.request,
+            "Статус успешно изменен",
+            # f'Статус "{self.object.name}" успешно изменён.',  # type:ignore
         )
         return response
 
@@ -96,16 +98,17 @@ class StatusDeleteView(DeleteView):
         try:
             response = super().form_valid(form)  # type:ignore
             messages.success(
-                self.request, "Статус успешно удален"
-                #f'Статус "{self.object.name}" успешно удалён.',  # type:ignore
+                self.request,
+                "Статус успешно удален",
+                # f'Статус "{self.object.name}" успешно удалён.',  # type:ignore
             )
             return response
 
         except ProtectedError:
             messages.error(
-                self.request, "Невозможно удалить статус, " \
-                "потому что он используется"
-                #f"Нельзя удалить используемый статус '{self.object.name}'",  
+                self.request,
+                "Невозможно удалить статус, потому что он используется",
+                # f"Нельзя удалить используемый статус '{self.object.name}'",
                 # type:ignore
             )
             return redirect(self.get_success_url())

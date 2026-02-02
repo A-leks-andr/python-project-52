@@ -42,9 +42,7 @@ class UserCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        messages.success(
-            self.request, "Пользователь успешно зарегистрирован"
-        )
+        messages.success(self.request, "Пользователь успешно зарегистрирован")
         return super().form_valid(form)
 
 
@@ -76,9 +74,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
         if password:
             user.set_password(password)
-            messages.success(
-                self.request, "Пользователь успешно изменен"
-            )
+            messages.success(self.request, "Пользователь успешно изменен")
         else:
             messages.success(
                 self.request,
@@ -114,8 +110,9 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         try:
             self.object.delete()
             messages.success(
-                request, "Пользователь успешно удален"
-                #f'Пользователь "{self.object.username}" успешно удалён.',
+                request,
+                "Пользователь успешно удален",
+                # f'Пользователь "{self.object.username}" успешно удалён.',
             )
 
         except ProtectedError:

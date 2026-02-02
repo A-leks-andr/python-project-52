@@ -30,7 +30,7 @@ class TaskFilter(django_filters.FilterSet):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.form.label_suffix = ""
-        executor_field = self.form.fields['executor']
+        executor_field = self.form.fields["executor"]
         executor_field.label_from_instance = lambda obj: obj.get_full_name()  # type: ignore
 
     def filter_my_tasks(self, queryset, name, value):
