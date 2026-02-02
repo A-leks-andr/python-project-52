@@ -22,7 +22,7 @@ class TaskFilter(django_filters.FilterSet):
     )
 
     my_tasks = django_filters.BooleanFilter(
-        label="Только мои задачи",
+        label="Только свои задачи",
         method="filter_my_tasks",
         widget=forms.CheckboxInput(),
     )
