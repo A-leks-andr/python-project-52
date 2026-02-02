@@ -76,7 +76,7 @@ class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context["menu"] = menu_registered
         context["title"] = "Удалить задачу"
-        context["button"] = "Подтвердить удаление"
+        context["button"] = "Да, удалить"
         return context
 
     def test_func(self):
