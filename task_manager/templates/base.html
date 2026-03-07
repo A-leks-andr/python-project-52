@@ -54,7 +54,9 @@
 </div>
 <footer>
     <div class="cellar">
-        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
+        {% if user_ip %}
+        Ваш IP-адрес: {{ user_ip }}
+        {% endif %}
     </div>
 </footer>
 <script src="{% static 'button.js' %}" defer></script>

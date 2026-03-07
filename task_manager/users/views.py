@@ -10,6 +10,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from task_manager.menu import menu_registered, menu_unregistered
 from task_manager.users.forms import UserRegistrationForm, UserUpdateDataForm
+from task_manager.utils import get_client_ip
 
 User = get_user_model()
 # Create your views here.
@@ -22,6 +23,7 @@ class UsersView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["user_ip"] = get_client_ip(self.request)
         if self.request.user.is_authenticated:
             context["menu"] = menu_registered
         else:

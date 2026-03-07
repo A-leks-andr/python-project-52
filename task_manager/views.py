@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 
 from task_manager.forms import LoginForm
 from task_manager.menu import menu_registered, menu_unregistered
+from task_manager.utils import get_client_ip
 
 
 class IndexView(TemplateView):
@@ -16,6 +17,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["user_ip"] = get_client_ip(self.request)
 
         if self.request.user.is_authenticated:
             context["menu"] = menu_registered
@@ -29,11 +31,19 @@ class UserLoginView(View):
     form_class = LoginForm
     success_url = reverse_lazy("index")
 
+    def get_common_context(self, form):
+        return {
+            "menu": menu_unregistered,
+            "form": form,
+            "user_ip": get_client_ip(self.request),
+        }
+
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        data = {"menu": menu_unregistered, "form": form}
 
-        return render(request, self.template_name, context=data)
+        return render(
+            request, self.template_name, self.get_common_context(form)
+        )
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request, data=request.POST)
@@ -54,9 +64,9 @@ class UserLoginView(View):
                 "Пожалуйста, попробуйте еще раз.",
             )
 
-            data = {"menu": menu_unregistered, "form": form}
-
-            return render(request, self.template_name, context=data)
+            return render(
+                request, self.template_name, self.get_common_context(form)
+            )
 
 
 class UserLogoutView(LogoutView):
